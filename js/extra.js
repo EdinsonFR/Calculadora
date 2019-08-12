@@ -1,3 +1,11 @@
+ac.onclick = function(e){
+  function borrar(){
+    pantalla.innerHTML = 0
+  }
+  borrar();
+}
+
+
 function init(){
   //variables
   var resultado = document.getElementById('display');

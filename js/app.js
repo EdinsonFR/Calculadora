@@ -23,10 +23,14 @@ var calculadora = (function(){
   var operandoB;
   var operacion;
   //los eventos de click sobre las imagenes de botones
-  sign.onclick = function(e){
+  masMenos.onclick = function(e){
     if(pantalla.textContent != 0){
-      pantalla.textContent = "-" + pantalla.textContent;
+      operandoA = pantalla.textContent;
+      pantalla.innerHTML = parseFloat(operandoA) * -1;
     }
+  }
+  punto.onclick = function(e){
+    pantalla.textContent = pantalla.textContent + ".";
   }
   suma.onclick = function(e){
     operandoA = pantalla.textContent;
@@ -52,69 +56,72 @@ var calculadora = (function(){
     operandoB = pantalla.textContent;
     resolver();
   }
-  on.onclick = function(e){
-    limpiar();
+  ac.onclick = function(e){
+    function borrar(){
+      pantalla.innerHTML = 0
+    }
+    borrar();
   }
 
 
   uno.onclick = function(e){
-    if(pantalla.textContent == 0){
+    if(pantalla.textContent == "0"){
       pantalla.innerHTML = 1;
     } else {
       pantalla.textContent = pantalla.textContent + 1;
     }
   }
   dos.onclick = function(e){
-    if(pantalla.textContent == 0){
+    if(pantalla.textContent == "0"){
       pantalla.innerHTML = 2;
     } else {
       pantalla.textContent = pantalla.textContent + 2;
     }
   }
   tres.onclick = function(e){
-    if(pantalla.textContent == 0){
+    if(pantalla.textContent == "0"){
       pantalla.innerHTML = 3;
     } else {
       pantalla.textContent = pantalla.textContent + 3;
     }
   }
   cuatro.onclick = function(e){
-    if(pantalla.textContent == 0){
+    if(pantalla.textContent == "0"){
       pantalla.innerHTML = 4
     } else {
       pantalla.textContent = pantalla.textContent + 4;
     }
   }
   cinco.onclick = function(e){
-    if(pantalla.textContent == 0){
+    if(pantalla.textContent == "0"){
       pantalla.innerHTML = 5;
     } else {
       pantalla.textContent = pantalla.textContent + 5;
     }
   }
   seis.onclick = function(e){
-    if(pantalla.textContent == 0){
+    if(pantalla.textContent == "0"){
       pantalla.innerHTML = 6;
     } else {
       pantalla.textContent = pantalla.textContent + 6;
     }
   }
   siete.onclick = function(e){
-    if(pantalla.textContent == 0){
+    if(pantalla.textContent == "0"){
       pantalla.innerHTML = 7;
     } else {
       pantalla.textContent = pantalla.textContent + 7;
     }
   }
   ocho.onclick = function(e){
-    if(pantalla.textContent == 0){
+    if(pantalla.textContent == "0"){
       pantalla.innerHTML = 8;
     } else {
       pantalla.textContent = pantalla.textContent + 8;
     }
   }
   nueve.onclick = function(e){
-    if(pantalla.textContent == 0){
+    if(pantalla.textContent == "0"){
       pantalla.innerHTML = 9;
     } else {
       pantalla.textContent = pantalla.textContent + 9;
@@ -147,8 +154,13 @@ var calculadora = (function(){
     limpiar();
     pantalla.textContent = res;
   }
+
+
+
+
+
   function limpiar(){
-    pantalla.textContent = "0";
+    pantalla.textContent = "";
   }
 
 })();
