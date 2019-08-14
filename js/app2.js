@@ -23,7 +23,7 @@ var calculadora = {//objeto llamado calculadora
   operandoA:0,
   operandoB:0,
   operacion:"",
-  //los eventos de click sobre las imagenes de botones
+  //el atrubuto que sera llamado al final, es el que contiene los metodos y funciones
   init: function(){
     //declaracion de las variables, usando this ya que son atributos de calculadora
     var pantalla = this.pantalla;
@@ -45,6 +45,7 @@ var calculadora = {//objeto llamado calculadora
     var ocho = this.ocho;
     var nueve = this.nueve;
     var cero = this.cero;
+    var tecla = this.tecla;
     var operandoA = this.operandoA;
     var operandoB = this.operandoB;
     var operacion = this.operacion;
@@ -216,17 +217,31 @@ var calculadora = {//objeto llamado calculadora
       }
       pantalla.textContent = res;
       if(pantalla.textContent.length > 8){
-        pantalla.innerHTML = "SintaxError";
+        if(pantalla.textContent.indexOf(".") == -1){
+          pantalla.innerHTML = "Error¬";// muestra error, ya que el resultado tiene mas de 8 digitos
+        } else{
+          pantalla.textContent = res.toFixed(6);  //hace que cuaquier numero obtenga solo 5 decimales
+        }
       } else {
-        pantalla.textContent = res;
+        pantalla.textContent = res;// muestra el resultado
       }
     }
     //funciones que hacen que su telca redusca su tamaño y regrese a su tamaño original
     function down(){
-      tecla.setAttribute("style","transform:scale(0.85,0.85)");
+      for(var i = 0; i<tecla.length; i++){
+        tecla[i].setAttribute("style", "transform: scale(0.90, 0.90);");
+      }
     }
     function up(){
-      tecla.setAttribute("style","transform:scale(1,1)");
+      for(var i = 0; i<tecla.length; i++){
+        tecla[i].setAttribute("style", "transform:scale(1,1);");
+      }
+    }
+    function ciclo(){
+      for(var i = 0; i<tecla.length; i++){
+        tecla[i].addEventListener("mousedown", down);
+        tecla[i].addEventListener("mouseup", up);
+      }
     }
     //ciclo para ir recoriendo el array obtenido por getElementsByClassName
 
