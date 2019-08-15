@@ -196,12 +196,6 @@ var calculadora = {//objeto llamado calculadora
       pantalla.textContent = res;
     }
     //funciones que hacen que su telca redusca su tamaño y regrese a su tamaño original
-    function down(){
-      tecla.setAttribute("style","transform:scale(0.85,0.85)");
-    }
-    function up(){
-      tecla.setAttribute("style","transform:scale(1,1)");
-    }
     //ciclo para ir recoriendo el array obtenido por getElementsByClassName
 
   }

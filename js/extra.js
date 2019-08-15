@@ -1,4 +1,28 @@
 
+function condiciones(){
+  if (pantalla.textContent.indexOf(".") == -1){}
+    if(pantalla.textContent.length < 10){
+      pantalla.textContent = pantalla.textContent + 1;
+    }
+  }
+
+
+function down(){
+  for(var i = 0; i<tecla.length; i++){
+    tecla[i].setAttribute("style", "transform: scale(0.90, 0.90);");
+  }
+}
+function up(){
+  for(var i = 0; i<tecla.length; i++){
+    tecla[i].setAttribute("style", "transform:scale(1,1);");
+  }
+}
+function ciclo(){
+  for(var i = 0; i<tecla.length; i++){
+    tecla[i].addEventListener("mousedown", down);
+    tecla[i].addEventListener("mouseup", up);
+  }
+}
 
   tecla[i].setAttribute("style","transform:scale(0.85,0.85)");
   tecla[i].setAttribute("style","transform:scale(1,1)");
