@@ -102,6 +102,9 @@ var calculadora = {//objeto llamado calculadora
     }
     function borrar(){
       pantalla.innerHTML = 0;
+      operandoA = 0;
+      operandoB = 0;
+      operacion = ""
     }
     function signo(){
       if(pantalla.textContent != 0){
@@ -281,20 +284,21 @@ var calculadora = {//objeto llamado calculadora
         if(pantalla.textContent.indexOf(".") == -1){
           pantalla.innerHTML = "Error¬";// muestra error, ya que el resultado tiene mas de 8 digitos
         } else{
-          pantalla.textContent = res.toFixed(6);  //hace que cuaquier numero obtenga solo 5 decimales
+          if(pantalla.textContent.length > 8){ // la condicion es que si pantalla.textContent.length es mayor a 8 digitos hacer  qeu tengo 2 decimales si no que tenga 6
+            pantalla.textContent = res.toFixed(2);  //hace que cuaquier numero obtenga solo 2 decimales
+          } else {
+              pantalla.textContent = res.toFixed(6);  //hace que cuaquier numero obtenga solo 6 decimales
+          }
         }
       } else {
         pantalla.textContent = res;// muestra el resultado
       }
     }
-    //funciones que hacen que su telca redusca su tamaño y regrese a su tamaño original
-
-    //ciclo para ir recoriendo el array obtenido por getElementsByClassName
-
   },
-  Efecto: function() {
+  //esta funcion realiza que al precionar una tecla disminuya su tamaño y cuando se deje de precionar regrese a tu tamaño original
+  Efecto: function() {// esta como atributo y se manda a llamar en la funcion init() asi: this.Efecto();
     var teclas = document.getElementsByClassName("tecla");
-    for(let i = 0; i < teclas.length; i++){
+    for(let i = 0; i < teclas.length; i++){//ciclo para ir recoriendo el array obtenido por getElementsByClassName
       teclas[i].addEventListener("mousedown", function(){
         teclas[i].style.transform = "scale(0.90, 0.90)";
       });
